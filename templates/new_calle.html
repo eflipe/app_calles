@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+<title>{% block title %} {{city_str}} {% endblock%}</title>
+
+
+{% block content %}
+<h1 class=""> INFO </h1>
+
+
+<div class="list-group">
+  <div class="list-group-item">
+    <h4>
+    Ciudad:
+    </h4>
+    <p>{{city_str}}</p>
+
+  </div>
+  <br>
+  <div class="list-group-item">
+    <h4>
+    Dirección:
+    </h4>
+    <p>{{address}}</p>
+
+  </div>
+
+</div>
+<br>
+    <form class="form" method="post">
+
+      {% if geo_calle %}
+      <label for="calle_url">Calle: {{ geo_calle }}</label>
+      {% else %}
+      <h4>
+        Coordenadas:
+
+      </h4>
+      {% endif %}
+
+
+        <div class="form-group">
+          <small class="form-text text-muted">Latitud: </small>
+          <input type="text" class="form-control" id="lat_url" name="lat_url" value="{{ lat_str }}"
+          aria-describedby="latitud"  placeholder="Latitud...">
+        </div>
+        <div class="form-group">
+          <small class="form-text text-muted">Longitud: </small>
+          <input type="text" class="form-control" id="long_url" name="long_url" value="{{ long_str }}"
+          aria-describedby="longitud"  placeholder="Longitud...">
+        </div>
+
+    <button type="submit" class="btn btn-light" name="button">Enviar coordenadas</button>
+
+  </form>
+
+  <br>
+
+{% endblock content %}
+{% block map %}
+
+
+  <div>
+    <div style="width: 80vw; height: 50vh" id="mapContainer">
+    </div>
+
+
+
+</div>
+<section>
+  <script>
+
+      function showPosition() {
+          if(navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(function(position) {
+                console.log(position.coords.latitude)
+                console.log(position.coords.longitude)
+                  // document.getElementById("lat_url").value = position.coords.latitude;
+                  // document.getElementById("long_url").value = position.coords.longitude;
+              });
+          } else {
+              alert("Sorry, your browser does not support HTML5 geolocation.");
+          }
+      }
+      showPosition()
+
+      // Initialize the platform object:
+          var platform = new H.service.Platform({
+            'apikey': '{{api_key}}'
+          });
+
+    	   const lat = {{lat_str}};
+    	   const lon = {{long_str}};
+
+    	// Obtain the default map types from the platform object
+          var maptypes = platform.createDefaultLayers();
+
+          // Initialize a map:
+          var map = new H.Map(
+            document.getElementById('mapContainer'),
+            maptypes.raster.terrain.map,
+            {
+              zoom: 18,
+              center: { lat: lat, lng: lon }
+            });
+
+    	// Enable the event system on the map instance:
+    	  var mapEvents = new H.mapevents.MapEvents(map);
+
+    	// Instantiate the default behavior, providing the mapEvents object:
+    	 var behavior = new H.mapevents.Behavior(mapEvents);
+
+    	//window.addEventListener('resize',()=> get.ViewProt().resize())
+    	var marker = new H.map.Marker({ lat: lat, lng: lon });
+
+    	// Add the marker to the map:
+    	map.addObject(marker);
+
+    	// Create the default UI:
+    	var ui = H.ui.UI.createDefault(map, maptypes);
+
+    	// Add event listener to the marker:
+    	marker.addEventListener('tap', function(evt) {
+
+    		// Create an info bubble object at a specific geographic location:
+    		var bubble = new H.ui.InfoBubble({ lng: lon, lat: lat }, {
+                    content: '<p> <h4>Dirección</h4>{{address}}</p>'
+                 });
+
+    		// Add info bubble to the UI:
+    		ui.addBubble(bubble);
+    	});
+
+  </script>
+</section>
+{% endblock map %}
