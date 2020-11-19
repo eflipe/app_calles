@@ -5,14 +5,10 @@ from models.api_here import api_here
 from models.api_ip import ip_info
 
 
-
-
-
-
 calle_blueprint = Blueprint('item_calle', __name__)
 
 
-@calle_blueprint.route('/', methods=['GET', 'POST']) # index
+@calle_blueprint.route('/', methods=['GET', 'POST'])  # index
 def index():
     if request.method == 'POST':
         calle_lat = request.form['lat_url']
