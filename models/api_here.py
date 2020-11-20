@@ -6,8 +6,8 @@ import models.constants as Constants
 # at=[-34.6131, -58.3772]
 def api_here(latitude, longitude):
 
-    URL = Constants.URL_HERE
-    api_key = Constants.API_KEY_HERE # Acquire from developer.here.com
+    URL = "https://revgeocode.search.hereapi.com/v1/revgeocode"#Constants.URL_HERE
+    api_key =  'DTefltZHcbSfUzgnavsqWrZbsPZgEJ3EFHyz-EDcqBc'# Constants.API_KEY_HERE # Acquire from developer.here.com
 
     location = "Buenos Aires"
     at='{},{}'.format(latitude,longitude)
