@@ -1,8 +1,7 @@
 from flask import Flask
-from dotenv import load_dotenv
 from views.item_calle import calle_blueprint
 
-load_dotenv()
+
 app = Flask(__name__)
 
 app.register_blueprint(calle_blueprint, url_prefix="/")

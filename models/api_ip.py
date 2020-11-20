@@ -2,17 +2,16 @@ import ipinfo
 import pprint
 import models.constants as Constants
 
-access_token = "0b334fd91614f7" #Constants.API_IP_TOKEN
+access_token = Constants.API_IP_TOKEN #Constants.API_IP_TOKEN
 
 
-def ip_info():
+def ip_info(ip_address=None):
     handler = ipinfo.getHandler(access_token)
-    print(access_token)
-    details = handler.getDetails()
-    print(details.city)
-    print(details.city)
+    print(handler)
+    print(ip_address)
+    details = handler.getDetails(ip_address)
     pprint.pprint(details.all)
-
+    print(details.city)
 
     city_str = details.city
     lat_long = details.loc.split(',')
