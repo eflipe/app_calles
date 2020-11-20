@@ -10,7 +10,8 @@ import json
 url = 'http://api.hostip.info/get_json.php'
 req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.100 Safari/537.36'})
 info = json.loads(urllib.request.urlopen(req).read())
-ip_address = info['ip']
+#ip_address = info['ip']
+ip_address = request.headers.get("X-Forwarded-For", request.remote_addr)
 print(ip_address)
 
 calle_blueprint = Blueprint('item_calle', __name__)
