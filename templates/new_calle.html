@@ -26,6 +26,18 @@
 
 </div>
 <br>
+    <div class="form-group">
+      <small class="form-text text-muted">Latitud: </small>
+      <input type="text" class="form-control" id="lat_url" name="lat_url" value="{{ lat_str }}"
+      aria-describedby="latitud"  placeholder="Latitud...">
+    </div>
+    <div class="form-group">
+      <small class="form-text text-muted">Longitud: </small>
+      <input type="text" class="form-control" id="long_url" name="long_url" value="{{ long_str }}"
+      aria-describedby="longitud"  placeholder="Longitud...">
+    </div>
+
+    
     <form class="form" method="post">
 
       {% if geo_calle %}
@@ -38,16 +50,6 @@
       {% endif %}
 
 
-        <div class="form-group">
-          <small class="form-text text-muted">Latitud: </small>
-          <input type="text" class="form-control" id="lat_url" name="lat_url" value="{{ lat_str }}"
-          aria-describedby="latitud"  placeholder="Latitud...">
-        </div>
-        <div class="form-group">
-          <small class="form-text text-muted">Longitud: </small>
-          <input type="text" class="form-control" id="long_url" name="long_url" value="{{ long_str }}"
-          aria-describedby="longitud"  placeholder="Longitud...">
-        </div>
 
     <div class="form-group">
       <small class="form-text text-muted">Latitud: </small>
