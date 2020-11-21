@@ -52,12 +52,12 @@
     <button type="submit" class="btn btn-light" name="button">Enviar coordenadas</button>
     <div class="form-group">
       <small class="form-text text-muted">Latitud: </small>
-      <input type="text" class="form-control" id="lat_url" name="lat_url" value=""
+      <input type="text" class="form-control" id="lat_url_1" name="lat_url" value=""
       aria-describedby="latitud"  placeholder="Latitud...">
     </div>
     <div class="form-group">
       <small class="form-text text-muted">Longitud: </small>
-      <input type="text" class="form-control" id="long_url" name="long_url" value=""
+      <input type="text" class="form-control" id="long_url_2" name="long_url" value=""
       aria-describedby="longitud"  placeholder="Longitud...">
     </div>
 
@@ -84,8 +84,8 @@
               navigator.geolocation.getCurrentPosition(function(position) {
                 console.log(position.coords.latitude)
                 console.log(position.coords.longitude)
-                  document.getElementById("lat_url").value = position.coords.latitude;
-                  document.getElementById("long_url").value = position.coords.longitude;
+                  document.getElementById("lat_url_1").value = position.coords.latitude;
+                  document.getElementById("long_url_2").value = position.coords.longitude;
               });
           } else {
               alert("Sorry, your browser does not support HTML5 geolocation.");
