@@ -12,16 +12,19 @@ url = 'http://api.hostip.info/get_json.php'
 req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.100 Safari/537.36'})
 info = json.loads(urllib.request.urlopen(req).read())
 #ip_address = info['ip']
-headers_list = request.headers.getlist("X-Forwarded-For")
-print(request.headers)
-ip_address = headers_list[0] if headers_list else request.remote_addr
-print(ip_address)
 
 calle_blueprint = Blueprint('item_calle', __name__)
 
 #flask run -h 192.168.0.85
 @calle_blueprint.route('/', methods=['GET', 'POST'])  # index
 def index():
+    print(request.headers)
+    
+    headers_list = request.headers.getlist("X-Forwarded-For")
+    print(request.headers)
+    ip_address = headers_list[0] if headers_list else request.remote_addr
+    print(ip_address)
+
     if request.method == 'POST':
         calle_lat = request.form['lat_url']
         calle_long = request.form['long_url']
