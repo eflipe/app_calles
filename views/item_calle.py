@@ -19,15 +19,15 @@ calle_blueprint = Blueprint('item_calle', __name__)
 @calle_blueprint.route('/', methods=['GET', 'POST'])  # index
 def index():
     print(request.headers)
-    
+
     headers_list = request.headers.getlist("X-Forwarded-For")
     print(request.headers)
     ip_address = headers_list[0] if headers_list else request.remote_addr
     print(ip_address)
 
     if request.method == 'POST':
-        calle_lat = request.form['lat_url']
-        calle_long = request.form['long_url']
+        calle_lat = request.form['lat_url_1']
+        calle_long = request.form['long_url_2']
         print(calle_lat, calle_long)
         geo_calle = geolocator(calle_lat, calle_long)
         print(geo_calle)
