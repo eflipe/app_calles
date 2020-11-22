@@ -8,5 +8,5 @@ def geolocator(lat, long):
     coordinates = f"{lat}, {long}"
     location = locator.reverse(coordinates)
     road_string = location.raw['address']['road']
-    road_string_edit = ('_').join(road_string.split(' ')[1:])
+    road_string_edit = ('_').join(road_string.split(' ')[:])
     return road_string_edit

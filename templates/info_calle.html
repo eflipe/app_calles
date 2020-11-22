@@ -7,9 +7,11 @@
 <a href="{{wiki_calle}}" class="text-decoration-none text-muted">
   <h4>Seguir leyendo (Wiki)</h4>
 </a>
+{% endblock content %}
+{% block map %}
 <section>
   <script>
-      
+
 
       // Initialize the platform object:
           var platform = new H.service.Platform({
@@ -62,6 +64,4 @@
 
   </script>
 </section>
-
-
-{% endblock content %}
+{% endblock map %}
