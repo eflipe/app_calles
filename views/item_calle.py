@@ -42,7 +42,7 @@ def index():
         wiki_calle = info_calle.wiki_calle()
 
         return render_template("info_calle.html", geo_calle=geo_calle,
-                                print_calle=print_calle, wiki_calle=wiki_calle
+                                print_calle=print_calle, wiki_calle=wiki_calle,
                                 api_key=context[0], address=context[3],
                                 lat_str=calle_lat, long_str=calle_long)
     # ip_address = request.remote_addr
