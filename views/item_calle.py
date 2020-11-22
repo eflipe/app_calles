@@ -29,6 +29,12 @@ def index():
         calle_lat = request.form['lat_url_1']
         calle_long = request.form['long_url_2']
         print(calle_lat, calle_long)
+        context = api_here(calle_lat, calle_long)
+        print(type(context))
+
+        print(context)
+        print(context[1])
+        print(context[2])
         geo_calle = geolocator(calle_lat, calle_long)
         print(geo_calle)
         info_calle = Calle(geo_calle)
@@ -36,22 +42,19 @@ def index():
         wiki_calle = info_calle.wiki_calle()
 
         return render_template("info_calle.html", geo_calle=geo_calle,
-                                print_calle=print_calle, wiki_calle=wiki_calle)
+                                print_calle=print_calle, wiki_calle=wiki_calle
+                                api_key=context[0], address=context[3],
+                                lat_str=calle_lat, long_str=calle_long)
     # ip_address = request.remote_addr
     # print(type(ip_address))
     # print(str(ip_address))
     # print(type(ip_address))
     ip_info_api = ip_info(ip_address)
-    context = api_here(ip_info_api[0], ip_info_api[1])
-    print(type(context))
 
-    print(context)
-    print(context[1])
-    print(context[2])
 
-    return render_template("new_calle.html", api_key=context[0],
+    return render_template("new_calle.html",
                            lat_str=ip_info_api[0], long_str=ip_info_api[1],
-                           address=context[3], city_str=ip_info_api[2])
+                           city_str=ip_info_api[2])
     #return render_template("new_calle.html", lat_str=lat_str, long_str=long_str, city_str=city_str)
 
 
