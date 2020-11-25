@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% block title %}
+
+{% endblock%}
 {% block content %}
 <h1>{{ geo_calle }}</h1>
 <br>
@@ -6,6 +9,7 @@
 <br>
 <a href="{{wiki_calle}}" class="text-decoration-none text-muted">
   <h4>Seguir leyendo (Wiki)</h4>
+<br>
 </a>
 {% endblock content %}
 {% block map %}

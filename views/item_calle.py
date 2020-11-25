@@ -49,7 +49,7 @@ def index():
     # print(type(ip_address))
     # print(str(ip_address))
     # print(type(ip_address))
-    ip_info_api = ip_info(ip_address)
+    ip_info_api = ip_info()
 
 
     return render_template("new_calle.html",
