@@ -1,12 +1,12 @@
 from models.open_calle import text_to_list
 
 
-nuevo_text = text_to_list()
 #nombre_calle = "Moldes"
 #print(nuevo_text)
 
 
 def calle_txt(nombre_calle=None):
+    nuevo_text = text_to_list()
     nuevo_nuevo = []
     index_1 = 0
     start = 0
