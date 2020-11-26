@@ -1,10 +1,17 @@
 #from open_calle import text_to_list
 #from utils.open_calle import text_to_list
-import io
+import io, os
+
+file_txt = 'calles_text.txt'
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+print(basedir)
+ruta = os.path.join(basedir, file_txt)
+print(ruta)
 
 
 def text_to_list():
-    file_txt = 'calles_text.txt'
+    file_txt = ruta
     nuevo_text = []
 
     with io.open(file_txt) as openfile:
