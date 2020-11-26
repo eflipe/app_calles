@@ -1,6 +1,17 @@
-from open_calle import text_to_list
-#from models.open_calle import text_to_list
+#from open_calle import text_to_list
+#from utils.open_calle import text_to_list
+import io
 
+
+def text_to_list():
+    file_txt = 'calles_text.txt'
+    nuevo_text = []
+
+    with io.open(file_txt) as openfile:
+        for line in openfile:
+            nuevo_text.append(line.rstrip('\n'))
+#    print(nuevo_text)
+    return nuevo_text
 
 #nombre_calle = "Moldes"
 #print(nuevo_text)
