@@ -14,7 +14,7 @@ def text_to_list():
     file_txt = ruta
     nuevo_text = []
 
-    with io.open(file_txt) as openfile:
+    with io.open(file_txt, encoding='utf-8') as openfile:
         for line in openfile:
             nuevo_text.append(line.rstrip('\n'))
 #    print(nuevo_text)
