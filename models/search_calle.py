@@ -15,13 +15,13 @@ def text_to_list():
     file_txt = ruta
     nuevo_text = []
 
-    with open(file_txt) as openfile:
+    with open(file_txt, encoding='latin1') as openfile:
         for line in openfile:
             nuevo_text.append(line.rstrip('\n'))
 #    print(nuevo_text)
     return nuevo_text
 
-#nombre_calle = "Agüero"
+nombre_calle = "Agüero"
 #print(nuevo_text)
 
 
@@ -71,7 +71,7 @@ def calle_txt(nombre_calle=None):
     print(calle_info)
     return calle_info
 
-# calle_txt(nombre_calle)
+calle_txt(nombre_calle)
 
 
 #     for line in openfile:
