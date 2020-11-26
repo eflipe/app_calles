@@ -1,17 +1,10 @@
 #from open_calle import text_to_list
 #from utils.open_calle import text_to_list
-import io, os
-
-# absolute path to this file
-FILE_DIR = os.path.dirname(os.path.abspath(__file__))
-# absolute path to this file's root directory
-PARENT_DIR = os.path.join(FILE_DIR, os.pardir)
-global file_txt
-file_txt = os.path.join(PARENT_DIR, 'calles_text.txt')
+import io
 
 
 def text_to_list():
-    #file_txt = file_txt
+    file_txt = 'calles_text.txt'
     nuevo_text = []
 
     with io.open(file_txt) as openfile:
@@ -20,9 +13,9 @@ def text_to_list():
 #    print(nuevo_text)
     return nuevo_text
 
+#nombre_calle = "Moldes"
 #print(nuevo_text)
 
-nombre_calle = "Moldes"
 
 def calle_txt(nombre_calle=None):
     nuevo_text = text_to_list()
@@ -70,7 +63,7 @@ def calle_txt(nombre_calle=None):
     print(calle_info)
     return calle_info
 
-calle_txt(nombre_calle)
+# calle_txt(nombre_calle)
 
 
 #     for line in openfile:
