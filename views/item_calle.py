@@ -41,7 +41,7 @@ def index():
         geo_calle = geolocator(calle_lat, calle_long)
         print(geo_calle)
         info_calle = Calle(geo_calle)
-        if context[4] == "Buenos Aires":
+        if context[4] == "Ciudad de Buenos Aires":
             print_calle = calle_txt(geo_calle)
         else:
             print_calle = info_calle.load_calle()
@@ -56,7 +56,7 @@ def index():
     # print(type(ip_address))
     # print(str(ip_address))
     # print(type(ip_address))
-    ip_info_api = ip_info()
+    ip_info_api = ip_info(ip_address)
 
 
     return render_template("new_calle.html",
