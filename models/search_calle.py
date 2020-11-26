@@ -1,4 +1,4 @@
-from open_calle import text_to_list
+from models.open_calle import text_to_list
 
 
 nuevo_text = text_to_list()
