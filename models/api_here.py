@@ -21,6 +21,7 @@ def api_here(latitude, longitude):
     longitude = data['items'][0]['position']['lng']
     address = data['items'][0]['address']['label']
     street = data['items'][0]['address']['street']
+    city = data['items'][0]['address']['city']
     # district = data['items'][0]['address']['district']
 
     # print(latitude)
@@ -28,4 +29,4 @@ def api_here(latitude, longitude):
     # print(address)
     # print(street)
     # print(district)
-    return [api_key, latitude, longitude, address]
+    return [api_key, latitude, longitude, address, city]

@@ -3,6 +3,7 @@ from models.item_calle import Calle
 from models.api_calle import geolocator
 from models.api_here import api_here
 from models.api_ip import ip_info
+from models.search_calle import calle_txt
 from flask import jsonify
 import urllib.request
 import json
@@ -35,10 +36,16 @@ def index():
         print(context)
         print(context[1])
         print(context[2])
+        print(context[4])
+
         geo_calle = geolocator(calle_lat, calle_long)
         print(geo_calle)
         info_calle = Calle(geo_calle)
-        print_calle = info_calle.load_calle()
+        if context[4] == "Buenos Aires":
+            print_calle = calle_txt(geo_calle)
+        else:
+            print_calle = info_calle.load_calle()
+
         wiki_calle = info_calle.wiki_calle()
 
         return render_template("info_calle.html", geo_calle=geo_calle,
