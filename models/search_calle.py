@@ -1,4 +1,5 @@
-from models.open_calle import text_to_list
+from open_calle import text_to_list
+#from models.open_calle import text_to_list
 
 
 #nombre_calle = "Moldes"
