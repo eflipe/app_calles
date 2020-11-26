@@ -1,6 +1,7 @@
 #from open_calle import text_to_list
 #from utils.open_calle import text_to_list
-import io, os
+import io
+import os
 
 file_txt = 'calles_text.txt'
 
@@ -14,13 +15,13 @@ def text_to_list():
     file_txt = ruta
     nuevo_text = []
 
-    with io.open(file_txt, encoding='utf-8') as openfile:
+    with open(file_txt) as openfile:
         for line in openfile:
             nuevo_text.append(line.rstrip('\n'))
 #    print(nuevo_text)
     return nuevo_text
 
-#nombre_calle = "Moldes"
+#nombre_calle = "Agüero"
 #print(nuevo_text)
 
 
@@ -49,7 +50,7 @@ def calle_txt(nombre_calle=None):
     #print(nuevo_nuevo)
 
     calle_info = []
-
+    print(nombre_calle)
     for linea in nuevo_nuevo:
         index = 0
         prev = 0
