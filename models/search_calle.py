@@ -51,7 +51,7 @@ def calle_txt(nombre_calle=None):
 
     calle_info = []
     print(nombre_calle)
-    nombre_calle = (' ').joint(nombre_calle.split('_'))
+    nombre_calle = (' ').join(nombre_calle.split('_'))
     for linea in nuevo_nuevo:
         index = 0
         prev = 0
