@@ -21,7 +21,7 @@ def text_to_list():
 #    print(nuevo_text)
     return nuevo_text
 
-nombre_calle = "Agüero"
+# nombre_calle = "Agüero"
 #print(nuevo_text)
 
 
@@ -71,7 +71,7 @@ def calle_txt(nombre_calle=None):
     print(calle_info)
     return calle_info
 
-calle_txt(nombre_calle)
+#calle_txt(nombre_calle)
 
 
 #     for line in openfile:

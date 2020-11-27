@@ -42,6 +42,7 @@ def index():
         print(geo_calle)
         info_calle = Calle(geo_calle)
         if context[4] == "Ciudad de Buenos Aires":
+            geo_calle = (' ').join(info_calle.split('_'))
             print_calle = calle_txt(geo_calle)
         else:
             print_calle = info_calle.load_calle()
