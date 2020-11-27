@@ -8,7 +8,7 @@ def geolocator(lat, long):
     coordinates = f"{lat}, {long}"
     location = locator.reverse(coordinates)
     road_string = location.raw['address']['road']
-    if 'Doctor' in road_string
+    if 'Doctor' in road_string:
         long = len('Doctor')
         return road_string[long:]
     print(road_string)
