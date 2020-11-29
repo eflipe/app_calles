@@ -21,7 +21,7 @@ def text_to_list():
 #    print(nuevo_text)
     return nuevo_text
 
-# nombre_calle = "Agüero"
+#nombre_calle = "Gorriti"
 #print(nuevo_text)
 
 
@@ -53,6 +53,8 @@ def calle_txt(nombre_calle=None):
     print(nombre_calle)
     nombre_calle = (' ').join(nombre_calle.split('_'))
     print('Despues Split', nombre_calle)
+    nombre_calle = f'{nombre_calle.upper()} (calle)'
+    print("Despues de (calle)", nombre_calle)
 
     for linea in nuevo_nuevo:
         index = 0
@@ -64,7 +66,7 @@ def calle_txt(nombre_calle=None):
 
             if index == -1:
                 break
-            print(" " * (index - prev) + f"{nombre_calle}", end='')
+            #print(" " * (index - prev) + f"{nombre_calle}", end='')
 
             prev = index + len(nombre_calle)
             index += len(nombre_calle)
@@ -72,7 +74,7 @@ def calle_txt(nombre_calle=None):
 
         #print('\n' + linea))
     print(calle_info)
-    return calle_info
+    return calle_info[0]
 
 #calle_txt(nombre_calle)
 
