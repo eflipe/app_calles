@@ -73,8 +73,10 @@ def calle_txt(nombre_calle=None):
             calle_info.append(linea)
 
         #print('\n' + linea))
-    print(calle_info)
-    return calle_info[0]
+    if calle_info:
+        return calle_info[0]
+        
+    return calle_info
 
 #calle_txt(nombre_calle)
 
