@@ -62,8 +62,8 @@ def index():
     # print(type(ip_address))
     ip_info_api = ip_info(ip_address)
 
-    calle_lat = request.form['lat_url_1']
-    calle_long = request.form['long_url_2']
+    calle_lat = request.form.get['lat_url_1']
+    calle_long = request.form.get['long_url_2']
     print(calle_lat, calle_long)
     context = api_here(calle_lat, calle_long)
 
