@@ -5,7 +5,7 @@
 
 {% block content %}
 
-
+<div class="container-index"></div>
   <form class="form-signin text-center" method="post">
     <h1 class="h3 mb-3 font-weight-normal">{{city_str}}</h1>
     <small class="form-text text-muted">Latitud: </small>
@@ -18,7 +18,7 @@
     <input type="text" class="form-control" id="long_url_2" name="long_url_2" value=""
     aria-describedby="longitud"  placeholder="Longitud...">
     <button type="submit" class="btn btn-light mt-3" name="button">Enviar datos</button>
-    <p class="mt-5 mb-3 text-muted">&copy; La sheca 2020</p>
+    <p class="mt-5 mb-3 text-muted" style="text-align: center">&copy; La sheca 2020</p>
   </form>
 
 {% endblock content %}
