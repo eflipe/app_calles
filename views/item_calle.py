@@ -25,6 +25,7 @@ def index():
     print(request.headers)
     ip_address = headers_list[0] if headers_list else request.remote_addr
     print(ip_address)
+    ip_info_api = ip_info(ip_address)
 
     if request.method == 'POST':
         calle_lat = request.form['lat_url_1']
@@ -60,20 +61,19 @@ def index():
     # print(type(ip_address))
     # print(str(ip_address))
     # print(type(ip_address))
-    ip_info_api = ip_info(ip_address)
+    if request.method == 'GET':
+        calle_lat = request.form['lat_url_1']
+        calle_long = request.form['long_url_2']
+        print(calle_lat, calle_long)
+        context = api_here(calle_lat, calle_long)
 
-    calle_lat = request.form.get['lat_url_1']
-    calle_long = request.form.get['long_url_2']
-    print(calle_lat, calle_long)
-    context = api_here(calle_lat, calle_long)
+        print('Dirección', context[3])
 
-    print('Dirección', context[3])
+        geo_calle = geolocator(calle_lat, calle_long)
 
-    geo_calle = geolocator(calle_lat, calle_long)
-
-    return render_template("new_calle.html",
-                           lat_str=ip_info_api[0], long_str=ip_info_api[1],
-                           city_str=ip_info_api[2], name_calle=context[3])
+        return render_template("new_calle.html",
+                               lat_str=ip_info_api[0], long_str=ip_info_api[1],
+                               city_str=ip_info_api[2], name_calle=context[3])
     #return render_template("new_calle.html", lat_str=lat_str, long_str=long_str, city_str=city_str)
 
 
