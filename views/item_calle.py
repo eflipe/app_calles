@@ -50,31 +50,16 @@ def index():
         else:
             print_calle = info_calle.load_calle()
 
-
         wiki_calle = info_calle.wiki_calle()
 
         return render_template("info_calle.html", geo_calle=geo_calle,
                                 print_calle=print_calle, wiki_calle=wiki_calle,
                                 api_key=context[0], address=context[3],
                                 lat_str=calle_lat, long_str=calle_long)
-    # ip_address = request.remote_addr
-    # print(type(ip_address))
-    # print(str(ip_address))
-    # print(type(ip_address))
-    default_get_1 = '-34.6131'
-    default_get_2 = '-58.3772'
-    calle_lat = request.form.get('lat_url_1', default_get_1)
-    calle_long = request.form.get('long_url_2', default_get_2)
-    print(calle_lat, calle_long)
-    context = api_here(calle_lat, calle_long)
-
-    print('Dirección', context[3])
-
-    geo_calle = geolocator(calle_lat, calle_long)
 
     return render_template("new_calle.html",
                            lat_str=ip_info_api[0], long_str=ip_info_api[1],
-                           city_str=ip_info_api[2], name_calle=context[3])
+                           city_str=ip_info_api[2])
     #return render_template("new_calle.html", lat_str=lat_str, long_str=long_str, city_str=city_str)
 
 
