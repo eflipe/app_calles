@@ -3,6 +3,8 @@
 
 {% endblock%}
 {% block content %}
+
+<div class="container">
 <h1>{{ geo_calle }}</h1>
 <br>
 <p>{{print_calle}}</p>
@@ -12,13 +14,11 @@
 <br>
 </a>
 {% endblock content %}
+</div>
 {% block map %}
-  <div>
+<div class="container">
     <div style="width: 80vw; height: 50vh" id="mapContainer">
-    </div>
-
-
-
+  </div>
 </div>
 <section>
   <script>
