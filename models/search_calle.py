@@ -22,7 +22,12 @@ def text_to_list():
     return nuevo_text
 
 #nombre_calle = "Gorriti"
+nombre_calle = "CRÁMER"
 #print(nuevo_text)
+
+
+def sin_tilde(nombre_calle):
+    return nombre_calle.translate(str.maketrans("ÁÉÍÓÚ", "AEIOU"))
 
 
 def calle_txt(nombre_calle=None):
@@ -55,6 +60,8 @@ def calle_txt(nombre_calle=None):
     print('Despues Split', nombre_calle)
     nombre_calle = f'{nombre_calle.upper()} (calle)'
     print("Despues de (calle)", nombre_calle)
+    nombre_calle = sin_tilde(nombre_calle)
+    print("Sin tilde", nombre_calle)
 
     for linea in nuevo_nuevo:
         index = 0
@@ -75,10 +82,16 @@ def calle_txt(nombre_calle=None):
         #print('\n' + linea))
     if calle_info:
         return calle_info[0]
-        
+
     return calle_info
 
-#calle_txt(nombre_calle)
+
+print(calle_txt(nombre_calle))
+
+
+
+
+# print(sin_tilde(nombre_calle))
 
 
 #     for line in openfile:
