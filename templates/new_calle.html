@@ -8,13 +8,16 @@
 
   <form class="form-signin">
     <h1 class="h3 mb-3 font-weight-normal">{{city_str}}</h1>
-    <label for="inputEmail" class="sr-only">Latitud</label>
+    <small class="form-text text-muted">Latitud: </small>
+    <label for="lat_url_1" class="sr-only">Latitud</label>
     <input type="text" class="form-control" id="lat_url_1" name="lat_url_1" value=""
     aria-describedby="latitud"  placeholder="Latitud...">
-    <label for="inputPassword" class="sr-only">Longitud</label>
+
+    <small class="form-text text-muted">Latitud: </small>
+    <label for="long_url_2" class="sr-only">Longitud</label>
     <input type="text" class="form-control" id="long_url_2" name="long_url_2" value=""
     aria-describedby="longitud"  placeholder="Longitud...">
-    <button type="submit" class="btn btn-light" name="button">Enviar datos</button>
+    <button type="submit" class="btn btn-light mb-3" name="button">Enviar datos</button>
     <p class="mt-5 mb-3 text-muted">&copy; La sheca 2020</p>
   </form>
 
