@@ -61,9 +61,10 @@ def index():
     # print(type(ip_address))
     # print(str(ip_address))
     # print(type(ip_address))
-    default_get = 0
-    calle_lat = request.form.get('lat_url_1', default_get)
-    calle_long = request.form.get('long_url_2', default_get)
+    default_get_1 = '-34.6131'
+    default_get_2 = '-58.3772'
+    calle_lat = request.form.get('lat_url_1', default_get_1)
+    calle_long = request.form.get('long_url_2', default_get_2)
     print(calle_lat, calle_long)
     context = api_here(calle_lat, calle_long)
 
