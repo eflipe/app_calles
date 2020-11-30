@@ -62,10 +62,18 @@ def index():
     # print(type(ip_address))
     ip_info_api = ip_info(ip_address)
 
+    calle_lat = request.form['lat_url_1']
+    calle_long = request.form['long_url_2']
+    print(calle_lat, calle_long)
+    context = api_here(calle_lat, calle_long)
+
+    print('Dirección', context[3])
+
+    geo_calle = geolocator(calle_lat, calle_long)
 
     return render_template("new_calle.html",
                            lat_str=ip_info_api[0], long_str=ip_info_api[1],
-                           city_str=ip_info_api[2])
+                           city_str=ip_info_api[2], name_calle=context[3])
     #return render_template("new_calle.html", lat_str=lat_str, long_str=long_str, city_str=city_str)
 
 
