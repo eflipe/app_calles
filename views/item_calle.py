@@ -78,6 +78,7 @@ def busqueda_calle():
 
         if not busqueda_calle:
             busqueda_calle = 'Por favor, introducir el nombre de la calle'
+            flash(error)
 
         if error is None:
             info_calle = Calle(busqueda_calle)
@@ -93,6 +94,5 @@ def busqueda_calle():
                                     geo_calle=busqueda_calle,
                                     print_calle=print_calle,
                                     wiki_calle=wiki_calle)
-        flash(error)
 
     return render_template('busqueda_calle.html')
