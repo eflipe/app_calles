@@ -78,6 +78,8 @@ def busqueda_calle():
 
         if not busqueda_calle:
             busqueda_calle = 'Por favor, introducir el nombre de la calle'
+            return render_template("info_calle.html",
+                                    geo_calle=busqueda_calle)
 
         if error is None:
             info_calle = Calle(busqueda_calle)
