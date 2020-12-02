@@ -10,11 +10,23 @@
 <br>
 <p>{{print_calle}}</p>
 <br>
+{% if message %}
+{% for message in get_flashed_messages() %}
+<div class="flash">{{ message }}</div>
+{% endfor %}
+{% else %}
 <a href="{{wiki_calle}}" class="text-decoration-none text-muted">
   <h4>Seguir leyendo (Wiki)</h4>
-
-<br>
+  <br>
 </a>
+<a href="{{ url_for('item_calle.busqueda_calle') }}" class="text-decoration-none text-muted">
+  <h4>Buscar otra calle</h4>
+  <br>
+</a>
+
+{% endif %}
+
+
 </div>
 {# style="width: 80vw; height: 80vh" #}
 <div>
