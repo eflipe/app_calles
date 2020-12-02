@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, flash
 from models.item_calle import Calle
 from models.api_calle import geolocator
 from models.api_here import api_here
@@ -55,14 +55,14 @@ def index():
         wiki_calle = info_calle.wiki_calle()
 
         return render_template("info_calle.html", geo_calle=geo_calle,
-                                print_calle=print_calle, wiki_calle=wiki_calle,
-                                api_key=context[0], address=context[3],
-                                lat_str=calle_lat, long_str=calle_long)
+                                 print_calle=print_calle, wiki_calle=wiki_calle,
+                                 api_key=context[0], address=context[3],
+                                 lat_str=calle_lat, long_str=calle_long)
 
     return render_template("new_calle.html",
                            lat_str=ip_info_api[0], long_str=ip_info_api[1],
                            city_str=ip_info_api[2])
-    #return render_template("new_calle.html", lat_str=lat_str, long_str=long_str, city_str=city_str)
+    # return render_template("new_calle.html", lat_str=lat_str, long_str=long_str, city_str=city_str)
 
 
 @calle_blueprint.route("/get_my_ip", methods=["GET"])
@@ -72,4 +72,26 @@ def get_my_ip():
 
 @calle_blueprint.route("/busqueda_calle", methods=["GET", "POST"])
 def busqueda_calle():
+    if request.method == 'POST':
+        busqueda_calle = request.form['busqueda_calle']
+        error = None
+
+        if not busqueda_calle:
+            busqueda_calle = 'Por favor, introducir el nombre de la calle'
+
+        if error is None:
+            info_calle = Calle(busqueda_calle)
+            print_calle = calle_txt(busqueda_calle)
+
+            if not print_calle:
+                print("No encontrado")
+                print_calle = info_calle.load_calle()
+
+            wiki_calle = info_calle.wiki_calle()
+
+            return render_template("info_calle.html",
+                                    geo_calle=busqueda_calle,
+                                    print_calle=print_calle,
+                                    wiki_calle=wiki_calle)
+
     return render_template('busqueda_calle.html')
