@@ -8,9 +8,9 @@
 <div class="container-index"></div>
   <form class="form-signin text-center" method="post">
     <h1 class="h3 mb-3 font-weight-normal">Nueva búsqueda</h1>
-    {% for message in get_flashed_messages() %}
+    {# {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
-    {% endfor %}
+    {% endfor %} #}
     <small class="form-text text-muted">Nombre de la calle: </small>
     <label for="busqueda_calle" class="sr-only">Calle</label>
     <input type="text" class="form-control" id="busqueda_calle" name="busqueda_calle" value=""

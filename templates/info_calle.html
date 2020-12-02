@@ -8,12 +8,16 @@
 <div>
 <h1>{{ geo_calle }}</h1>
 <br>
+{% if print_calle %}
 <p>{{print_calle}}</p>
 <br>
 <a href="{{wiki_calle}}" class="text-decoration-none text-muted">
   <h4>Seguir leyendo (Wiki)</h4>
   <br>
 </a>
+
+{% endif %}
+
 
 <a href="{{ url_for('item_calle.busqueda_calle') }}" class="text-decoration-none text-muted">
   <h4>Buscar otra calle</h4>
