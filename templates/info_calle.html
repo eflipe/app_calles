@@ -6,7 +6,7 @@
 
 <div class="container">
 <div>
-{% if not geo_calle %}
+{% if message %}
   {% for message in get_flashed_messages() %}
   <div class="flash">{{ message }}</div>
   {% endfor %}

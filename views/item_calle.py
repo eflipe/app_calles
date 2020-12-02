@@ -93,5 +93,6 @@ def busqueda_calle():
                                     geo_calle=busqueda_calle,
                                     print_calle=print_calle,
                                     wiki_calle=wiki_calle)
+        flash(error)
 
     return render_template('busqueda_calle.html')
