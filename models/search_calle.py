@@ -22,7 +22,7 @@ def text_to_list():
     return nuevo_text
 
 #nombre_calle = "Gorriti"
-nombre_calle = "CRÁMER"
+#nombre_calle = "CRÁMER"
 #print(nuevo_text)
 
 
@@ -86,7 +86,7 @@ def calle_txt(nombre_calle=None):
     return calle_info
 
 
-print(calle_txt(nombre_calle))
+# print(calle_txt(nombre_calle))
 
 
 

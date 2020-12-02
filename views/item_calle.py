@@ -16,6 +16,7 @@ info = json.loads(urllib.request.urlopen(req).read())
 
 calle_blueprint = Blueprint('item_calle', __name__)
 
+
 #flask run -h 192.168.0.85
 @calle_blueprint.route('/', methods=['GET', 'POST'])  # index
 def index():
@@ -25,6 +26,7 @@ def index():
     print(request.headers)
     ip_address = headers_list[0] if headers_list else request.remote_addr
     print(ip_address)
+
     ip_info_api = ip_info(ip_address)
 
     if request.method == 'POST':
@@ -66,3 +68,8 @@ def index():
 @calle_blueprint.route("/get_my_ip", methods=["GET"])
 def get_my_ip():
     return jsonify({'ip': request.remote_addr}), 200
+
+
+@calle_blueprint.route("/busqueda_calle", methods=["GET", "POST"])
+def busqueda_calle():
+    return render_template('busqueda_calle.html')
