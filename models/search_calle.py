@@ -1,5 +1,6 @@
 #from open_calle import text_to_list
 #from utils.open_calle import text_to_list
+import re
 import io
 import os
 
@@ -23,6 +24,7 @@ def text_to_list():
 
 #nombre_calle = "Gorriti"
 #nombre_calle = "CRÁMER"
+nombre_calle = "corrientes"
 #print(nuevo_text)
 
 
@@ -58,26 +60,33 @@ def calle_txt(nombre_calle=None):
     print(nombre_calle)
     nombre_calle = (' ').join(nombre_calle.split('_'))
     print('Despues Split', nombre_calle)
-    nombre_calle = f'{nombre_calle.upper()} (calle)'
+    nombre_calle = f'{nombre_calle.upper()}'
     print("Despues de (calle)", nombre_calle)
     nombre_calle = sin_tilde(nombre_calle)
     print("Sin tilde", nombre_calle)
 
+    pattern = re.compile(r"({0} \(calle\)|{0} \(avenida\))".format(nombre_calle))
+
+    #(CRAMER \(calle\)|CRAMER \(avenida\))
     for linea in nuevo_nuevo:
         index = 0
         prev = 0
 
-        while index < len(linea):
-            linea = linea
-            index = linea.find(nombre_calle, index)
-
-            if index == -1:
-                break
-            #print(" " * (index - prev) + f"{nombre_calle}", end='')
-
-            prev = index + len(nombre_calle)
-            index += len(nombre_calle)
+        if pattern.search(linea) is not None:
+            #print(linea)
             calle_info.append(linea)
+
+        # while index < len(linea):
+        #     linea = linea
+        #     index = linea.find(nombre_calle, index)
+        #
+        #     if index == -1:
+        #         break
+        #     #print(" " * (index - prev) + f"{nombre_calle}", end='')
+        #
+        #     prev = index + len(nombre_calle)
+        #     index += len(nombre_calle)
+        #     calle_info.append(linea)
 
         #print('\n' + linea))
     if calle_info:
@@ -86,7 +95,7 @@ def calle_txt(nombre_calle=None):
     return calle_info
 
 
-# print(calle_txt(nombre_calle))
+#print(calle_txt(nombre_calle))
 
 
 
