@@ -27,6 +27,8 @@ def index():
     ip_address = headers_list[0] if headers_list else request.remote_addr
     print(ip_address)
 
+    ip_address = "201.212.251.103"
+
     ip_info_api = ip_info(ip_address)
 
     if request.method == 'POST':
@@ -92,7 +94,7 @@ def busqueda_calle():
             wiki_calle = info_calle.wiki_calle()
 
             return render_template("info_calle.html",
-                                    geo_calle=busqueda_calle,
+                                    geo_calle=busqueda_calle.title(),
                                     print_calle=print_calle,
                                     wiki_calle=wiki_calle)
         # flash(error)

@@ -14,6 +14,7 @@ class Calle:
         soup = BeautifulSoup(content, "html.parser")
         element = soup.find(self.tag_name)
         self.string_calle = element.text.strip()
+        print(self.string_calle)
         return self.string_calle
 
     def wiki_calle(self) -> str:

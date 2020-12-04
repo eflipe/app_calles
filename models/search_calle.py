@@ -9,7 +9,7 @@ ruta = os.path.join(basedir, file_txt)
 print(ruta)
 
 # nombre_calle = "Gorriti"
-nombre_calle = "CRÁMER"
+# nombre_calle = "CRÁMER"
 # nombre_calle = "corrientes"
 # print(nuevo_text)
 
@@ -42,8 +42,8 @@ def calle_txt(nombre_calle=None):
 
     if calle_info:
         return calle_info[0]
-
+    print(calle_info)
     return calle_info
 
 
-print(calle_txt(nombre_calle))
+# print(calle_txt(nombre_calle))

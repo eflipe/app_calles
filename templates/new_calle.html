@@ -8,17 +8,22 @@
 <div class="container-index"></div>
   <form class="form-signin text-center" method="post">
     <h1 class="h3 mb-3 font-weight-normal">{{city_str}}</h1>
-    <small class="form-text text-muted">Latitud: </small>
+    {# <small class="form-text text-muted">Latitud: </small> #}
     <label for="lat_url_1" class="sr-only">Latitud</label>
-    <input type="text" class="form-control" id="lat_url_1" name="lat_url_1" value=""
+    <input type="hidden" class="form-control" id="lat_url_1" name="lat_url_1" value=""
     aria-describedby="latitud"  placeholder="Latitud...">
 
-    <small class="form-text text-muted">Longitud: </small>
+    {# <small class="form-text text-muted">Longitud: </small> #}
     <label for="long_url_2" class="sr-only">Longitud</label>
-    <input type="text" class="form-control" id="long_url_2" name="long_url_2" value=""
+    <input type="hidden" class="form-control" id="long_url_2" name="long_url_2" value=""
     aria-describedby="longitud"  placeholder="Longitud...">
-    <button type="submit" class="btn btn-light mt-3" name="button">Enviar datos</button>
+    <button type="submit" class="btn btn-light mt-3" name="button">Geolocalizar</button>
+    <br>
+    <a href="{{ url_for('item_calle.busqueda_calle') }}" class="text-decoration-none text-muted" target="_parent">
+      <button type="button" class="btn btn-light mt-3" name="button" value="{{ url_for('item_calle.busqueda_calle') }}">Buscar por nombre</button>
+    </a>
     <p class="mt-5 mb-3 text-muted" style="text-align: center">&copy; La sheca 2020</p>
+
   </form>
 
 {% endblock content %}
