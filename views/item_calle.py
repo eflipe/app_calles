@@ -100,3 +100,8 @@ def busqueda_calle():
         # flash(error)
 
     return render_template('busqueda_calle.html')
+
+
+# @calle_blueprint.errorhandler(404)
+# def not_found(e):
+#     return render_template('404.html'), 404
