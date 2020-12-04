@@ -24,7 +24,7 @@ def calle_txt(nombre_calle=None):
 
     print(nombre_calle)
     nombre_calle = (' ').join(nombre_calle.split('_'))
-    print('Despues Split', nombre_calle)
+    print('Despues Split y Strip', nombre_calle.strip())
     nombre_calle = f'{nombre_calle.upper()}'
     print("Despues de (calle)", nombre_calle)
     nombre_calle = sin_tilde(nombre_calle)

@@ -15,10 +15,10 @@
 
     <title>La sheca | {% block title %} {% endblock%}</title>
     <style media="screen">
-    {% block style %}
     .text-responsive {
-          font-size: calc(42px + (60 - 42) * (100vw - 768px) / (1440 - 768));
-      }
+      font-size: calc(42px + (60 - 42) * (100vw - 768px) / (1440 - 768));
+    }
+    {% block style %}
     html,
     body {
       height: 100%;
