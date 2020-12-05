@@ -9,9 +9,9 @@ import urllib.request
 import json
 
 
-url = 'http://api.hostip.info/get_json.php'
-req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.100 Safari/537.36'})
-info = json.loads(urllib.request.urlopen(req).read())
+# url = 'http://api.hostip.info/get_json.php'
+# req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.100 Safari/537.36'})
+# info = json.loads(urllib.request.urlopen(req).read())
 #ip_address = info['ip']
 
 calle_blueprint = Blueprint('item_calle', __name__)
@@ -46,12 +46,10 @@ def index():
         geo_calle = geolocator(calle_lat, calle_long)
         print(geo_calle)
         info_calle = Calle(geo_calle)
-        if context[4] == "Ciudad de Buenos Aires":
-            print_calle = calle_txt(geo_calle)
-            if not print_calle:
-                print("No encontrado")
-                print_calle = info_calle.load_calle()
-        else:
+        # if context[4] == "Ciudad de Buenos Aires":
+        print_calle = calle_txt(geo_calle)
+        if not print_calle:
+            print("No encontrado")
             print_calle = info_calle.load_calle()
 
         wiki_calle = info_calle.wiki_calle()
