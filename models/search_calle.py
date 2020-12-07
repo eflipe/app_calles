@@ -16,7 +16,7 @@ def sin_tilde(nombre_calle):
     return nombre_calle.translate(str.maketrans("ÁÉÍÓÚ", "AEIOU"))
 
 
-def search_calle(nombre_calle=None):
+def calle_txt(nombre_calle=None):
     file_txt = ruta
     calle_info = []
 
