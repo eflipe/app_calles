@@ -12,9 +12,6 @@ print(ruta)
 def sin_tilde(nombre_calle):
     return nombre_calle.translate(str.maketrans("ÁÉÍÓÚ", "AEIOU"))
 
-def sin_tilde(nombre_calle):
-    return nombre_calle.translate(str.maketrans("ÁÉÍÓÚ", "AEIOU"))
-
 
 def calle_txt(nombre_calle=None):
     file_txt = ruta
@@ -22,11 +19,11 @@ def calle_txt(nombre_calle=None):
 
     print(nombre_calle)
     nombre_calle = (' ').join(nombre_calle.split('_'))
-    print('Despues Split', nombre_calle)
+    #print('Despues Split', nombre_calle)
     nombre_calle = f'{nombre_calle.upper()}'
-    print("Despues de (calle)", nombre_calle)
+    #print("Despues de (calle)", nombre_calle)
     nombre_calle = sin_tilde(nombre_calle)
-    print("Sin tilde", nombre_calle)
+    print("NOMBRE CALLE", nombre_calle)
 
     pattern = re.compile(r"({0} \(calle\)|{0} \(avenida\))".format(nombre_calle))
 
@@ -35,17 +32,18 @@ def calle_txt(nombre_calle=None):
         index_1 = 0
         for linea in openfile:
 
-            if index_1 == 1:
-                #print("LINEA >", linea)
-                linea = linea.replace('- ', '')
-                linea = linea.replace('', '"').replace('', '"')
-                calle_info.append(linea.strip())
-                break
-
             if pattern.search(linea) is not None:
                 index_1 = 1
 
+            if index_1 == 1:
+                if nombre_calle.lower().title() in linea:
+                    linea = linea.replace('- ', '')
+                    linea = linea.replace('', '"').replace('', '"')
+                    calle_info.append(linea.strip())
+                    break
+
     if calle_info:
+        print(calle_info)
         return calle_info[0]
-    print(calle_info)
+
     return calle_info
