@@ -27,7 +27,7 @@ def index():
     ip_address = headers_list[0] if headers_list else request.remote_addr
     print(ip_address)
 
-    #ip_address = "201.212.251.103"
+    ip_address = "201.212.251.103"
 
     ip_info_api = ip_info(ip_address)
 
