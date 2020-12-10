@@ -1,8 +1,12 @@
 from flask import Flask, render_template
 from views.item_calle import calle_blueprint
-
+from flask_wtf.csrf import CSRFProtect
+import os
 
 app = Flask(__name__)
+app.secret_key = os.environ.get('SECRET_KEY')
+print(app.secret_key)
+csrf = CSRFProtect(app)
 
 app.register_blueprint(calle_blueprint, url_prefix="/")
 

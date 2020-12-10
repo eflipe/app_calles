@@ -8,6 +8,7 @@
 
 <div class="container-index"></div>
   <form class="form-signin text-center" method="post">
+    <input type="hidden" name="csrf_token" value='{{ csrf_token() }}'>
     <h1 class="h3 mb-3 font-weight-normal">Nueva búsqueda</h1>
     <small class="form-text text-muted mb-2">Nombre de la calle: </small>
     <label for="busqueda_calle" class="sr-only">Calle</label>
