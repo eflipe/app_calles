@@ -4,9 +4,11 @@ from models.api_calle import geolocator
 from models.api_here import api_here
 from models.api_ip import ip_info
 from models.search_calle import calle_txt
+from models.form import SearchForm
 from flask import jsonify
 import urllib.request
 import json
+
 
 
 # url = 'http://api.hostip.info/get_json.php'
@@ -27,7 +29,7 @@ def index():
     ip_address = headers_list[0] if headers_list else request.remote_addr
     print(ip_address)
 
-    # ip_address = "201.212.251.103"
+    ip_address = "201.212.251.103"
 
     ip_info_api = ip_info(ip_address)
 
@@ -72,32 +74,46 @@ def get_my_ip():
 
 @calle_blueprint.route("/busqueda_calle", methods=["GET", "POST"])
 def busqueda_calle():
-    if request.method == 'POST':
-        busqueda_calle = request.form['busqueda_calle']
+    search_form = SearchForm(request.form)
+
+    if request.method == 'POST' and search_form.validate():
+        print("DATA FORM", search_form.search_item.data)
+        busqueda_calle = request.form['search_item'] # name="search_item"
+        msg_wiki = "*Datos obtenidos desde Wikipedia, pueden \
+                     no coincidir con su búsqueda."
+
         error = None
 
         if not busqueda_calle:
             busqueda_calle = 'Por favor, introducir el nombre de la calle'
             return render_template("info_calle.html",
-                                    geo_calle=busqueda_calle)
+                                   geo_calle=busqueda_calle,
+                                   msg_wiki=msg_wiki)
 
         if error is None:
+            busqueda_calle = busqueda_calle.title()
+            print("TITLE Calle: ", busqueda_calle)
             info_calle = Calle(busqueda_calle)
             print_calle = calle_txt(busqueda_calle)
+            msg_wiki = "*Info obtenida de la base de datos."
 
             if not print_calle:
                 print("No encontrado")
                 print_calle = info_calle.load_calle()
+
+                print("INFO WIKI", print_calle)
 
             wiki_calle = info_calle.wiki_calle()
 
             return render_template("info_calle.html",
                                     geo_calle=busqueda_calle.title(),
                                     print_calle=print_calle,
-                                    wiki_calle=wiki_calle)
+                                    wiki_calle=wiki_calle,
+                                    msg_wiki = msg_wiki,
+                                    form = search_form)
         # flash(error)
 
-    return render_template('busqueda_calle.html')
+    return render_template('busqueda_calle.html', form = search_form)
 
 
 # @calle_blueprint.errorhandler(404)
