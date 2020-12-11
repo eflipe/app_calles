@@ -5,8 +5,8 @@ import os
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY')
-print(app.secret_key)
-csrf = CSRFProtect(app)
+
+# csrf = CSRFProtect(app)
 
 app.register_blueprint(calle_blueprint, url_prefix="/")
 
