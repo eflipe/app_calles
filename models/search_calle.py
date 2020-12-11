@@ -25,7 +25,7 @@ def search_calle(nombre_calle=None):
     nombre_calle_sin_tilde = sin_tilde(nombre_calle)
     # print("Sin tilde", nombre_calle)
 
-    pattern = re.compile(r"({0}|{1} \(calle\)|{0}|{1} \(avenida\))".format(nombre_calle, nombre_calle_sin_tilde))
+    pattern = re.compile(r"({0}.*\(calle\)|{1}.*\(calle\)|{0}.*\(avenida\)|{1}.*\(avenida\))".format(nombre_calle_sin_tilde, nombre_calle))
 
     #(CRAMER \(calle\)|CRAMER \(avenida\))
     with open(file_txt, encoding='latin1') as openfile:
@@ -33,7 +33,7 @@ def search_calle(nombre_calle=None):
         index_2 = 0
 
         for linea in openfile:
-
+            linea = sin_tilde(linea)
             if pattern.search(linea) is not None:
                 index_1 = 1
                 #print("Si, index_1")
@@ -42,7 +42,7 @@ def search_calle(nombre_calle=None):
                 # print(linea)
 
             if index_1 == 1:
-                if nombre_calle.lower().title() in linea:
+                if nombre_calle_sin_tilde.lower().title() or nombre_calle.lower().title() in linea:
                     linea = linea.replace('- ', '')
                     linea = linea.replace('', '"').replace('', '"')
                     calle_info.append(linea.strip())
@@ -50,7 +50,7 @@ def search_calle(nombre_calle=None):
 
 
     if calle_info:
-        # print("INFO CALLE", calle_info)
+        print("INFO CALLE", calle_info)
         return calle_info[0]
 
     return calle_info
