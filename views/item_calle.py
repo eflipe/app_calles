@@ -3,7 +3,7 @@ from models.item_calle import Calle
 from models.api_calle import geolocator
 from models.api_here import api_here
 from models.api_ip import ip_info
-from models.search_calle import calle_txt
+from models.search_calle import search_calle
 from models.form import SearchForm
 from flask import jsonify
 import urllib.request
@@ -49,7 +49,7 @@ def index():
         print(geo_calle)
         info_calle = Calle(geo_calle)
         # if context[4] == "Ciudad de Buenos Aires":
-        print_calle = calle_txt(geo_calle)
+        print_calle = search_calle(geo_calle)
         if not print_calle:
             print("No encontrado")
             print_calle = info_calle.load_calle()
@@ -94,7 +94,7 @@ def busqueda_calle():
             busqueda_calle = busqueda_calle.title()
             print("TITLE Calle: ", busqueda_calle)
             info_calle = Calle(busqueda_calle)
-            print_calle = calle_txt(busqueda_calle)
+            print_calle = search_calle(busqueda_calle)
             msg_wiki = "*Info obtenida de la base de datos."
 
             if not print_calle:
