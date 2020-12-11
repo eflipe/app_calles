@@ -1,7 +1,7 @@
 import re
 import os
 
-file_txt = 'calles_text_list_nuevo.txt'
+file_txt = 'calles_text_list.txt'
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 print(basedir)
@@ -13,33 +13,27 @@ def sin_tilde(nombre_calle):
     return nombre_calle.translate(str.maketrans("ÁÉÍÓÚ", "AEIOU"))
 
 
-def search_calle(nombre_calle=None):
+def calle_txt(nombre_calle=None):
     file_txt = ruta
     calle_info = []
 
     print(nombre_calle)
     nombre_calle = (' ').join(nombre_calle.split('_'))
-    # print('Despues Split', nombre_calle)
+    #print('Despues Split', nombre_calle)
     nombre_calle = f'{nombre_calle.upper()}'
-    # print("Despues de (calle)", nombre_calle)
-    nombre_calle_sin_tilde = sin_tilde(nombre_calle)
-    # print("Sin tilde", nombre_calle)
+    #print("Despues de (calle)", nombre_calle)
+    nombre_calle = sin_tilde(nombre_calle)
+    print("NOMBRE CALLE", nombre_calle)
 
-    pattern = re.compile(r"({0}|{1} \(calle\)|{0}|{1} \(avenida\))".format(nombre_calle, nombre_calle_sin_tilde))
+    pattern = re.compile(r"({0} \(calle\)|{0} \(avenida\))".format(nombre_calle))
 
     #(CRAMER \(calle\)|CRAMER \(avenida\))
     with open(file_txt, encoding='latin1') as openfile:
         index_1 = 0
-        index_2 = 0
-
         for linea in openfile:
 
             if pattern.search(linea) is not None:
                 index_1 = 1
-                #print("Si, index_1")
-                #print(linea)
-                continue
-                # print(linea)
 
             if index_1 == 1:
                 if nombre_calle.lower().title() in linea:
@@ -48,9 +42,8 @@ def search_calle(nombre_calle=None):
                     calle_info.append(linea.strip())
                     break
 
-
     if calle_info:
-        # print("INFO CALLE", calle_info)
+        print(calle_info)
         return calle_info[0]
 
     return calle_info

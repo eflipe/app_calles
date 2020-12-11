@@ -26,7 +26,7 @@ def api_here(latitude, longitude):
 
     # print(latitude)
     # print(longitude)
-    # print(address)
+    print("ADDRESS HERE", address)
     # print(street)
     # print(district)
     return [api_key, latitude, longitude, address, city]
