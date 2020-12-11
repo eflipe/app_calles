@@ -1,7 +1,7 @@
 import re
 import os
 
-file_txt = 'calles_text_list_nuevo.txt'
+file_txt = 'calles_text_list.txt'
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 print(basedir)
